@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">FinalApp</string>
+    //Titles
+    <string name="title_main_act">Welcome</string>
+    <string name="title_note_act">Notes</string>
+    <string name="title_add_note_act">Welcome</string>
+
+
+    //Main Activity:
+    <string name="main_act_textView"></string>
+
+    //Menu:
+    <string name="settings_item">Settings</string>
+
+    //Note List
+    <string name="note_list_switch_simple">Simple view</string>
+    <string name="note_list_switch_detail">Detail view</string>
+    <string name="add_note">Add new note</string>
+    <string name="dialog_title">Choose action</string>
+    <string name="dialog_question">What do you want to do?</string>
+    <string name="dialog_show">Show</string>
+    <string name="dialog_delete">Delete</string>
+    <string name="dialog_cancel">Cancel</string>
+
+    //Add note layout
+    <string name="add_note_main_label">Enter the fields: </string>
+    <string name="add_note_edit_name">Note name</string>
+    <string name="add_note_name_cont">Waiting</string>
+    <string name="add_note_group_name">Choose the template:</string>
+    <string name="add_note_btn">Add note!</string>
+    <string name="add_note_name_cont_true">Alright!</string>
+    <string name="add_note_name_cont_false">Too long!</string>
+</resources>
