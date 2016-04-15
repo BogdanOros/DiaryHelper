@@ -5,5 +5,6 @@ package com.example.talizorah.finalapp.enums;
  */
 public enum ListViewAdapters {
     SimpleListView,
-    DetailListView
+    DetailListView,
+    CourseListView
 }

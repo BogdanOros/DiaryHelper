@@ -20,7 +20,6 @@ import com.example.talizorah.finalapp.Command.NoteCreateCommand;
 import com.example.talizorah.finalapp.Command.NoteDeleteCommand;
 import com.example.talizorah.finalapp.Command.NoteOpenCommand;
 import com.example.talizorah.finalapp.R;
-import com.example.talizorah.finalapp.Views.AddNoteActivity;
 import com.example.talizorah.finalapp.enums.ListViewAdapters;
 import com.example.talizorah.finalapp.factoryMethod.AdapterFactory;
 import com.example.talizorah.finalapp.notes.NoteHandler;

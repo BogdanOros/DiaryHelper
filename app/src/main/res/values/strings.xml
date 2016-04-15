@@ -4,6 +4,7 @@
     <string name="title_main_act">Welcome</string>
     <string name="title_note_act">Notes</string>
     <string name="title_add_note_act">Welcome</string>
+    <string name="title_course_act">Course</string>
 
 
     //Main Activity:
@@ -30,4 +31,9 @@
     <string name="add_note_btn">Add note!</string>
     <string name="add_note_name_cont_true">Alright!</string>
     <string name="add_note_name_cont_false">Too long!</string>
+
+    // Course_list
+    <string name="course_list_mainlabel">The course is: </string>
+
+
 </resources>

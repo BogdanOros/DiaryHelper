@@ -49,7 +49,7 @@ public class AddNotesController {
         setListeners();
     }
 
-    public void setListeners(){
+    private void setListeners(){
         setTextChangeListener();
         btnOnClickListener();
     }

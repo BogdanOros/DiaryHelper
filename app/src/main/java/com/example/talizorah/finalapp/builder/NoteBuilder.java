@@ -9,7 +9,7 @@ import com.example.talizorah.finalapp.notes.Note;
 public class NoteBuilder implements Builder {
 
     private Note note;
-    private int MAX_NAME_LEN = 10;
+    private int MAX_NAME_LEN = 16;
     private int MAX_TEXT_LEN = 240;
 
     private NoteBuilder(Note note){
