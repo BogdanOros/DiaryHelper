@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.view.View;
 
 import com.example.talizorah.finalapp.CourseItems.CourseItem;
+import com.example.talizorah.finalapp.decorators.Decorator;
+import com.example.talizorah.finalapp.decorators.NormalPriceDecorator;
 import com.example.talizorah.finalapp.decorators.WarningDecorator;
 
 /**
@@ -11,7 +13,7 @@ import com.example.talizorah.finalapp.decorators.WarningDecorator;
  */
 public class DecoratorElement implements VisitorElementService {
     private Activity activity;
-    WarningDecorator decorator;
+    Decorator decorator;
     private DecoratorElement(Activity activity){
         this.activity = activity;
     }
@@ -27,8 +29,13 @@ public class DecoratorElement implements VisitorElementService {
     }
 
     public View decorateCourseItemView(CourseItem item){
-        if(item.getBuyPrice() > 25){
+        if(item.getBuyPrice() > item.getCriticalPrice()){
             decorator = new WarningDecorator(activity);
+            decorator.setView(item.getView());
+            return decorator.getDecoratedView();
+        }
+        else if(item.getBuyPrice() < item.getCriticalPrice()){
+            decorator = new NormalPriceDecorator(activity);
             decorator.setView(item.getView());
             return decorator.getDecoratedView();
         }

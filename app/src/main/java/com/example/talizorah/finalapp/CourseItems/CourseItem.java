@@ -11,6 +11,20 @@ import com.example.talizorah.finalapp.Visitor.VisitorService;
  * Created by talizorah on 16.11.4.
  */
 public class CourseItem implements VisitorService {
+
+    private View view;
+    private double buyPrice;
+    private double sellPrice;
+    private double criticalPrice;
+
+    public double getCriticalPrice() {
+        return criticalPrice;
+    }
+
+    public void setCriticalPrice(double criticalPrice) {
+        this.criticalPrice = criticalPrice;
+    }
+
     public String getCourseName() {
         return courseName;
     }
@@ -45,10 +59,9 @@ public class CourseItem implements VisitorService {
         this.view = view;
     }
 
-    private View view;
-    private double buyPrice;
-    private double sellPrice;
+
     private CourseItem(){
+        criticalPrice = 25;
     }
     public static CourseItem createEmptyCourseItem(){
         return new CourseItem();

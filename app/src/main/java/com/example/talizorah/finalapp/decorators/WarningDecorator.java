@@ -10,7 +10,7 @@ import com.example.talizorah.finalapp.R;
 /**
  * Created by talizorah on 16.13.4.
  */
-public class WarningDecorator extends View{
+public class WarningDecorator extends View implements Decorator{
     private View view;
     public WarningDecorator(Context context) {
         super(context);
