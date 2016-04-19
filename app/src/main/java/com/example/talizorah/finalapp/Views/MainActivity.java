@@ -22,8 +22,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle(R.string.title_main_act);
         final Context mContext = this;
-        LinearLayout noteL = (LinearLayout)findViewById(R.id.note_layout);
-        LinearLayout courseL = (LinearLayout)findViewById(R.id.course_layout);
+        LinearLayout noteL = (LinearLayout) findViewById(R.id.note_layout);
+        LinearLayout courseL = (LinearLayout) findViewById(R.id.course_layout);
+        LinearLayout cashL = (LinearLayout) findViewById(R.id.cash_machines);
         courseL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,8 +39,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        cashL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, CashMachineListActivity.class);
+                startActivity(intent);
+            }
+        });
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);

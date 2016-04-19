@@ -8,6 +8,7 @@ import com.example.talizorah.finalapp.builder.NoteBuilder;
  * Created by talizorah on 16.11.4.
  */
 public class BuilderElement implements VisitorElementService {
+    private CourseDataList dataSource;
     private int dataSourceIterator;
     private BuilderElement(){
         dataSource = null;
@@ -16,7 +17,6 @@ public class BuilderElement implements VisitorElementService {
     public static BuilderElement createBuilderElement(){
         return new BuilderElement();
     }
-    private CourseDataList dataSource;
     @Override
     public void acceptVisitor(VisitorService visitorService) {
        visitorService.visitBuilderElement(this);

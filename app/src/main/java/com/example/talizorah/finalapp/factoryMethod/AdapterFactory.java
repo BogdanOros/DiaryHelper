@@ -33,14 +33,12 @@ public class AdapterFactory{
                 case DetailListView:
                     return new DetailListView(context, (List<Note>) items);
                 case CourseListView:
-                    if(items.size() != 0)
-                        return new CourseListView(context, (List<CourseItem>) items);
-                    else return null;
+                    return new CourseListView(context, (List<CourseItem>) items);
                 default:
                     return null;
             }
         }
-        catch (ClassCastException ex){
+        catch (Exception ex){
             Log.v("FACTORY", "Casting error");
         }
         return null;

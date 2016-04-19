@@ -51,4 +51,25 @@
             android:id="@+id/textView2" />
     </LinearLayout>
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:layout_margin="10dp"
+        android:id="@+id/cash_machines">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Банкомати"
+            android:id="@+id/cash_machines_label"
+            android:textSize="30sp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="20dp" />
+    </LinearLayout>
+
+
 </LinearLayout>
