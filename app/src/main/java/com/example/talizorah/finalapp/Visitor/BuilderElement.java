@@ -43,6 +43,7 @@ public class BuilderElement implements VisitorElementService {
         return dataSource.getList().get(dataSourceIterator).cFrom + " - " +
                 dataSource.getList().get(dataSourceIterator).cTo;
     }
+
     private Double getCourseBuyPrice(){
         return Double.valueOf(dataSource.getList().get(dataSourceIterator).cBuy);
     }

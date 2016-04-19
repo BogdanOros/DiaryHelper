@@ -18,8 +18,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by talizorah on 16.11.4.
@@ -57,6 +60,9 @@ public class CourseLoader extends AsyncTask<Void, Void, Void> {
             }
             jsonStr = buffer.toString();
             prefs.edit().putString("jsonCourseData", jsonStr).apply();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy - MM - dd", Locale.UK);
+            String currentDateAndTime = sdf.format(new Date());
+            prefs.edit().putString("jsonDownloadTime", currentDateAndTime).apply();
         }
         catch (Exception ex){
             return null;
