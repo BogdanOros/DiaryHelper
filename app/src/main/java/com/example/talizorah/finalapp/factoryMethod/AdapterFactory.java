@@ -6,9 +6,11 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 import com.example.talizorah.finalapp.CourseItems.CourseItem;
+import com.example.talizorah.finalapp.CustomViews.CustomListView.CashMachineListView;
 import com.example.talizorah.finalapp.CustomViews.CustomListView.CourseListView;
 import com.example.talizorah.finalapp.CustomViews.CustomListView.DetailListView;
 import com.example.talizorah.finalapp.CustomViews.CustomListView.SimpleListView;
+import com.example.talizorah.finalapp.cashMachine.CashMachineItem;
 import com.example.talizorah.finalapp.enums.ListViewAdapters;
 import com.example.talizorah.finalapp.notes.Note;
 
@@ -33,14 +35,14 @@ public class AdapterFactory{
                 case DetailListView:
                     return new DetailListView(context, (List<Note>) items);
                 case CourseListView:
-                    if(items.size() != 0)
-                        return new CourseListView(context, (List<CourseItem>) items);
-                    else return null;
+                    return new CourseListView(context, (List<CourseItem>) items);
+                case CashMachineListView:
+                    return new CashMachineListView(context, (List<CashMachineItem>) items);
                 default:
                     return null;
             }
         }
-        catch (ClassCastException ex){
+        catch (Exception ex){
             Log.v("FACTORY", "Casting error");
         }
         return null;
