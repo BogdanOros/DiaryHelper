@@ -22,7 +22,7 @@ public class CashMachineListView extends ArrayAdapter<CashMachineItem> {
     private final List<CashMachineItem> items;
 
     public CashMachineListView(Activity activity, List<CashMachineItem> items) {
-        super(activity, R.layout.cash_machine_list, items);
+        super(activity, R.layout.cash_machine_item, items);
         this.activity = activity;
         this.items = items;
     }
