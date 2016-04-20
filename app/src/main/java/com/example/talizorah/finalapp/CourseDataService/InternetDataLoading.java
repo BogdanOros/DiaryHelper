@@ -1,22 +1,14 @@
 package com.example.talizorah.finalapp.CourseDataService;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 
 import com.example.talizorah.finalapp.AsyncDataLoaders.JsonParser;
 import com.example.talizorah.finalapp.CourseItems.CourseDataList;
-import com.example.talizorah.finalapp.AsyncDataLoaders.CourseLoader;
+import com.example.talizorah.finalapp.AsyncDataLoaders.Loader;
 
 import org.json.JSONException;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.Arrays;
 
 /**
@@ -27,9 +19,9 @@ public class InternetDataLoading implements DataLoadingService{
     public CourseDataList loadData(Activity activity) {
         SharedPreferences prefs = activity.getSharedPreferences(
                 "com.example.talizorah.finalapp", activity.MODE_PRIVATE);
-        CourseLoader loader = new CourseLoader();
+        Loader loader = new Loader();
         loader.setActivity(activity);
-        loader.execute();
+        loader.execute("https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5", "jsonCourseData");
         CourseDataList list = new CourseDataList();
         try {
             list.getList().addAll(Arrays.asList(JsonParser.parseJson(prefs.getString("jsonCourseData", null), 3)));

@@ -4,9 +4,15 @@ import android.app.Activity;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
+import com.example.talizorah.finalapp.ConnectionChecker.ConnectionChecker;
 import com.example.talizorah.finalapp.cashMachine.CashMachineItem;
+import com.example.talizorah.finalapp.cashMachine.EthernetLoader;
+import com.example.talizorah.finalapp.cashMachine.GetListMachineAlgorithm;
+import com.example.talizorah.finalapp.cashMachine.OfflineLoader;
 import com.example.talizorah.finalapp.enums.ListViewAdapters;
 import com.example.talizorah.finalapp.factoryMethod.AdapterFactory;
+
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,6 +25,7 @@ public class CashMachineController {
     private Activity activity;
     private ListView listView;
     private AdapterFactory adapterFactory;
+    private GetListMachineAlgorithm algorithm;
     private List<CashMachineItem> itemsList;
     private BaseAdapter adapter;
 
@@ -26,21 +33,17 @@ public class CashMachineController {
         this.activity = activity;
         this.listView = listView;
         this.adapterFactory = AdapterFactory.createAdapterFactory();
-        itemsList = new ArrayList<CashMachineItem>();
+        if(ConnectionChecker.isNetworkAvailable(activity))
+            this.algorithm = new GetListMachineAlgorithm(new EthernetLoader());
+        else
+            this.algorithm = new GetListMachineAlgorithm(new OfflineLoader());
 
-        List<String> schedule = new ArrayList<>();
-        schedule.add("9-10 mon");
-        schedule.add("9-10 tuesday");
-        schedule.add("9-10 wednesday");
-        schedule.add("9-10 thursday");
-        schedule.add("9-10 friday");
-        schedule.add("9-10 saturday");
-        schedule.add("9-10 sunday");
+        try {
+            itemsList = algorithm.getDataList(activity);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-        itemsList.add(new CashMachineItem("Test address 1", "Test place 1", schedule));
-        itemsList.add(new CashMachineItem("Test address 2", "Test place 2", schedule));
-        itemsList.add(new CashMachineItem("Test address 3", "Test place 3", schedule));
-        itemsList.add(new CashMachineItem("Test address 4", "Test place 4", schedule));
     }
 
     public void setAdapter(){
