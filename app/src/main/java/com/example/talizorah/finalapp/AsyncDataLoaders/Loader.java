@@ -27,21 +27,21 @@ import java.util.Locale;
 /**
  * Created by talizorah on 16.11.4.
  */
-public class CourseLoader extends AsyncTask<Void, Void, Void> {
+public class Loader extends AsyncTask<String, Void, Void> {
     private Activity activity;
     public void setActivity(Activity activity){
         this.activity = activity;
     }
 
     @Override
-    protected Void doInBackground(Void ... params) {
+    protected Void doInBackground(String ... params) {
         SharedPreferences prefs = activity.getSharedPreferences(
                 "com.example.talizorah.finalapp", activity.MODE_PRIVATE);
         HttpURLConnection connection = null;
         BufferedReader reader = null;
         String jsonStr = null;
         try {
-            URL url = new URL("https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5");
+            URL url = new URL(params[0]);
             connection = (HttpURLConnection)url.openConnection();
             connection.setRequestMethod("GET");
             connection.connect();
@@ -59,10 +59,10 @@ public class CourseLoader extends AsyncTask<Void, Void, Void> {
                 return null;
             }
             jsonStr = buffer.toString();
-            prefs.edit().putString("jsonCourseData", jsonStr).apply();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy - MM - dd", Locale.UK);
             String currentDateAndTime = sdf.format(new Date());
             prefs.edit().putString("jsonDownloadTime", currentDateAndTime).apply();
+            prefs.edit().putString(params[1], jsonStr).apply();
         }
         catch (Exception ex){
             return null;
