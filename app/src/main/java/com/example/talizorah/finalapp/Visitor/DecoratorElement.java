@@ -1,6 +1,7 @@
 package com.example.talizorah.finalapp.Visitor;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.view.View;
 
 import com.example.talizorah.finalapp.CourseItems.CourseItem;
@@ -14,8 +15,12 @@ import com.example.talizorah.finalapp.decorators.WarningDecorator;
 public class DecoratorElement implements VisitorElementService {
     private Activity activity;
     Decorator decorator;
-    private DecoratorElement(Activity activity){
+    private SharedPreferences preferences;
+    private DecoratorElement(Activity activity)
+    {
         this.activity = activity;
+        this.preferences = activity.getSharedPreferences(
+                "com.example.talizorah.finalapp", activity.MODE_PRIVATE);
     }
     public void setActivity(Activity activity){
         this.activity = activity;
@@ -24,17 +29,18 @@ public class DecoratorElement implements VisitorElementService {
         return new DecoratorElement(activity);
     }
     @Override
-    public void acceptVisitor(VisitorService visitorService) {
-        visitorService.visitDecoratorElement(this);
+    public View acceptVisitor(VisitorService visitorService) {
+        return visitorService.visitDecoratorElement(this);
     }
 
     public View decorateCourseItemView(CourseItem item){
-        if(item.getBuyPrice() > item.getCriticalPrice()){
+        double price = Double.valueOf(preferences.getString(item.getCourseName(), "0"));
+        if(item.getBuyPrice() > price){
             decorator = new WarningDecorator(activity);
             decorator.setView(item.getView());
             return decorator.getDecoratedView();
         }
-        else if(item.getBuyPrice() < item.getCriticalPrice()){
+        else if(item.getBuyPrice() < price){
             decorator = new NormalPriceDecorator(activity);
             decorator.setView(item.getView());
             return decorator.getDecoratedView();
