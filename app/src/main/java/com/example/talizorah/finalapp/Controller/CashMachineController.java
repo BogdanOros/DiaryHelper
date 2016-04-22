@@ -1,7 +1,10 @@
 package com.example.talizorah.finalapp.Controller;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.talizorah.finalapp.ConnectionChecker.ConnectionChecker;
@@ -44,6 +47,37 @@ public class CashMachineController {
             e.printStackTrace();
         }
 
+    }
+
+    public void setNewAddress(){
+        final AlertDialog.Builder alert = new AlertDialog.Builder(activity);
+        final EditText editText = new EditText(activity);
+        alert.setMessage("Write the address: ");
+        alert.setTitle("Address!");
+        alert.setView(editText);
+        alert.setPositiveButton("Ok!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String str = editText.getText().toString();
+                if (ConnectionChecker.isNetworkAvailable(activity)) {
+                    algorithm = new GetListMachineAlgorithm(new EthernetLoader());
+                    algorithm.getLoader().setUri(str);
+                    try {
+                        itemsList = algorithm.getDataList(activity);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                setAdapter();
+            }
+        });
+        alert.setNegativeButton("Nope", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        alert.show();
     }
 
     public void setAdapter(){

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.BaseAdapter;
 
 import com.example.talizorah.finalapp.Controller.AdapterHolder;
 import com.example.talizorah.finalapp.CourseItems.CourseDataHolder;

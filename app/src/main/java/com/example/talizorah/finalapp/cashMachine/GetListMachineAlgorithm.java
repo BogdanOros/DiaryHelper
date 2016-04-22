@@ -1,8 +1,10 @@
 package com.example.talizorah.finalapp.cashMachine;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 
 import com.example.talizorah.finalapp.AsyncDataLoaders.JsonParser;
+import com.example.talizorah.finalapp.AsyncDataLoaders.Loader;
 
 import org.json.JSONException;
 
