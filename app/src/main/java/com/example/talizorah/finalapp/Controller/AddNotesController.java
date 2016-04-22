@@ -44,7 +44,6 @@ public class AddNotesController {
         this.textView = textView;
         this.button = button;
         this.builder = NoteBuilder.createNoteBuilder(Note.createEmptyNote());
-        // Great-great SHIT ->
         this.handler = NoteHandler.createNoteHandler(activity);
         setListeners();
     }

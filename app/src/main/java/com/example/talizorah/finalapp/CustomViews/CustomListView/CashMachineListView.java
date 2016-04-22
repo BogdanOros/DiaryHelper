@@ -42,7 +42,7 @@ public class CashMachineListView extends ArrayAdapter<CashMachineItem> {
         Calendar c = Calendar.getInstance();
         c.setTime(new Date());
 
-        scheduleLablel.setText(items.get(position).getSchedule().get(c.get(Calendar.DAY_OF_WEEK)));
+        scheduleLablel.setText(items.get(position).getSchedule().get(c.get(Calendar.DAY_OF_WEEK) - 1));
 
         return rowView;
     }
