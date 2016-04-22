@@ -1,5 +1,6 @@
 package com.example.talizorah.finalapp.CourseItems;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 
@@ -15,15 +16,6 @@ public class CourseItem implements VisitorService {
     private View view;
     private double buyPrice;
     private double sellPrice;
-    private double criticalPrice;
-
-    public double getCriticalPrice() {
-        return criticalPrice;
-    }
-
-    public void setCriticalPrice(double criticalPrice) {
-        this.criticalPrice = criticalPrice;
-    }
 
     public String getCourseName() {
         return courseName;
@@ -61,7 +53,6 @@ public class CourseItem implements VisitorService {
 
 
     private CourseItem(){
-        criticalPrice = 25;
     }
     public static CourseItem createEmptyCourseItem(){
         return new CourseItem();
@@ -73,12 +64,13 @@ public class CourseItem implements VisitorService {
     }
 
     @Override
-    public void visitBuilderElement(BuilderElement element) {
+    public View visitBuilderElement(BuilderElement element) {
         try {
             element.createCourseItem(this);
         }
         catch (IndexOutOfBoundsException ex){
             Log.v("ITEM CREATING", "No data source for such item");
         }
+        return null;
     }
 }

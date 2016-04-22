@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/course_list_mainlabel"
+        android:textSize="18sp"
         android:id="@+id/course_list_mainlabel"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp" />

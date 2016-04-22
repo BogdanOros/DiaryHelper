@@ -10,6 +10,11 @@ import com.example.talizorah.finalapp.AsyncDataLoaders.Loader;
  */
 public class OfflineLoader extends AbstractLoader {
     @Override
+    public void setUri(String uri) {
+        this.url = uri;
+    }
+
+    @Override
     public String getJson(Activity context) {
         SharedPreferences prefs =
                 context.getSharedPreferences("com.example.talizorah.finalapp", context.MODE_PRIVATE);

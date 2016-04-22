@@ -9,5 +9,5 @@ import android.view.View;
  */
 public interface VisitorService {
     View visitDecoratorElement(DecoratorElement element);
-    void visitBuilderElement(BuilderElement element);
+    View visitBuilderElement(BuilderElement element);
 }

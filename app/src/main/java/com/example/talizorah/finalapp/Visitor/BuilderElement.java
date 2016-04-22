@@ -1,5 +1,7 @@
 package com.example.talizorah.finalapp.Visitor;
 
+import android.view.View;
+
 import com.example.talizorah.finalapp.CourseItems.CourseDataList;
 import com.example.talizorah.finalapp.CourseItems.CourseItem;
 import com.example.talizorah.finalapp.builder.NoteBuilder;
@@ -18,8 +20,8 @@ public class BuilderElement implements VisitorElementService {
         return new BuilderElement();
     }
     @Override
-    public void acceptVisitor(VisitorService visitorService) {
-       visitorService.visitBuilderElement(this);
+    public View acceptVisitor(VisitorService visitorService) {
+       return visitorService.visitBuilderElement(this);
     }
 
     public void createCourseItem(CourseItem item) throws IndexOutOfBoundsException{

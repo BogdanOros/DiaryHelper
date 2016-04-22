@@ -19,10 +19,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Views.NoteActivity" />
-        <activity android:name=".Views.AddNoteActivity" />
-        <activity android:name=".Views.CourseActivity"/>
-        <activity android:name=".Views.CashMachineListActivity"/>
+        <activity android:name=".Views.NoteActivity"
+            android:parentActivityName=".Views.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Views.MainActivity"/>
+        </activity>
+        <activity android:name=".Views.AddNoteActivity"
+            android:parentActivityName=".Views.NoteActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Views.NoteActivity"/>
+
+        </activity>
+        <activity android:name=".Views.CourseActivity"
+            android:parentActivityName=".Views.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Views.MainActivity"/>
+        </activity>
+        <activity android:name=".Views.CashMachineListActivity"
+            android:parentActivityName=".Views.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Views.MainActivity"/>
+        </activity>
     </application>
 
 </manifest>
