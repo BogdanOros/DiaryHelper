@@ -17,16 +17,15 @@ import java.util.concurrent.TimeoutException;
  */
 public class EthernetLoader extends AbstractLoader {
     @Override
-    public void setUri(String uri) {
-        String city = "Киев";
+    public void setUri(String city, String address) {
         try {
-            uri = URLEncoder.encode(uri, "utf-8");
+            address = URLEncoder.encode(address, "utf-8");
             city = URLEncoder.encode(city, "utf-8");
         }
         catch (IOException e){
             e.printStackTrace();
         }
-        this.url = "https://api.privatbank.ua/p24api/infrastructure?json&atm&address=" + uri + "&city=" + city;
+        this.url = "https://api.privatbank.ua/p24api/infrastructure?json&atm&address=" + address + "&city=" + city;
     }
 
     @Override

@@ -10,8 +10,8 @@ import com.example.talizorah.finalapp.AsyncDataLoaders.Loader;
  */
 public class OfflineLoader extends AbstractLoader {
     @Override
-    public void setUri(String uri) {
-        this.url = uri;
+    public void setUri(String uri, String city) {
+        this.url = uri + city;
     }
 
     @Override

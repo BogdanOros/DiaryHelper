@@ -40,6 +40,9 @@ public class CashMachineListActivity extends AppCompatActivity{
         if(id == R.id.address_settings){
             controller.setNewAddress();
             return  true;
+        }else if(id == R.id.city_settings){
+            controller.setNewCity();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

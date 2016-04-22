@@ -49,6 +49,37 @@ public class CashMachineController {
 
     }
 
+    public void setNewCity(){
+        final AlertDialog.Builder alert = new AlertDialog.Builder(activity);
+        final EditText editText = new EditText(activity);
+        alert.setMessage("Write city: ");
+        alert.setTitle("City!");
+        alert.setView(editText);
+        alert.setPositiveButton("Ok!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String str = editText.getText().toString();
+                if(ConnectionChecker.isNetworkAvailable(activity)){
+                    algorithm = new GetListMachineAlgorithm(new EthernetLoader());
+                    algorithm.getLoader().setUri(str, "");
+                    try{
+                        itemsList = algorithm.getDataList(activity);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                setAdapter();
+            }
+        });
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        alert.show();
+    }
+
     public void setNewAddress(){
         final AlertDialog.Builder alert = new AlertDialog.Builder(activity);
         final EditText editText = new EditText(activity);
@@ -61,7 +92,7 @@ public class CashMachineController {
                 String str = editText.getText().toString();
                 if (ConnectionChecker.isNetworkAvailable(activity)) {
                     algorithm = new GetListMachineAlgorithm(new EthernetLoader());
-                    algorithm.getLoader().setUri(str);
+                    algorithm.getLoader().setUri("Киев", str);
                     try {
                         itemsList = algorithm.getDataList(activity);
                     } catch (JSONException e) {

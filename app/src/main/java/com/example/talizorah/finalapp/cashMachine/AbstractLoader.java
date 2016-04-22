@@ -12,5 +12,5 @@ public abstract class AbstractLoader {
     protected String prefsName = "cashMachineJson";
     protected String url = null;
     public abstract String getJson(Activity context);
-    public abstract void setUri(String uri);
+    public abstract void setUri(String city, String address);
 }
