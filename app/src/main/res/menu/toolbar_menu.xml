@@ -8,4 +8,11 @@
         android:icon="@drawable/ic_search"
         app:showAsAction="ifRoom">
     </item>
+    <item
+        android:title="city"
+        android:id="@+id/city_settings"
+        android:orderInCategory="99"
+        android:icon="@drawable/ic_city"
+        app:showAsAction="ifRoom">
+    </item>
 </menu>
