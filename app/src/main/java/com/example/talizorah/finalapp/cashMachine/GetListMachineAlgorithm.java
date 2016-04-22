@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 import com.example.talizorah.finalapp.AsyncDataLoaders.JsonParser;
 import com.example.talizorah.finalapp.AsyncDataLoaders.Loader;
+import com.example.talizorah.finalapp.ConnectionChecker.ConnectionChecker;
 
 import org.json.JSONException;
 
@@ -21,6 +22,13 @@ public class GetListMachineAlgorithm {
     }
 
     public List<CashMachineItem> getDataList(Activity activity) throws JSONException {
+        if(loader == null){
+            if(ConnectionChecker.isNetworkAvailable(activity)){
+                loader = new EthernetLoader();
+            }else{
+                loader = new OfflineLoader();
+            }
+        }
         String json = loader.getJson(activity);
         return JsonParser.parseCashMachineJson(json);
     }

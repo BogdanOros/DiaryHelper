@@ -31,10 +31,14 @@ public class CashMachineController {
     private GetListMachineAlgorithm algorithm;
     private List<CashMachineItem> itemsList;
     private BaseAdapter adapter;
+    private String city;
+    private String address;
 
     public CashMachineController(Activity activity, ListView listView) {
         this.activity = activity;
         this.listView = listView;
+        this.address = "";
+        this.city = "Киев";
         this.adapterFactory = AdapterFactory.createAdapterFactory();
         if(ConnectionChecker.isNetworkAvailable(activity))
             this.algorithm = new GetListMachineAlgorithm(new EthernetLoader());
@@ -58,10 +62,10 @@ public class CashMachineController {
         alert.setPositiveButton("Ok!", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String str = editText.getText().toString();
+                city = editText.getText().toString();
                 if(ConnectionChecker.isNetworkAvailable(activity)){
                     algorithm = new GetListMachineAlgorithm(new EthernetLoader());
-                    algorithm.getLoader().setUri(str, "");
+                    algorithm.getLoader().setUri(city, address);
                     try{
                         itemsList = algorithm.getDataList(activity);
                     } catch (JSONException e) {
@@ -89,10 +93,10 @@ public class CashMachineController {
         alert.setPositiveButton("Ok!", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String str = editText.getText().toString();
+                address = editText.getText().toString();
                 if (ConnectionChecker.isNetworkAvailable(activity)) {
                     algorithm = new GetListMachineAlgorithm(new EthernetLoader());
-                    algorithm.getLoader().setUri("Киев", str);
+                    algorithm.getLoader().setUri(city, address);
                     try {
                         itemsList = algorithm.getDataList(activity);
                     } catch (JSONException e) {
